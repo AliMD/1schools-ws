@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-weight:bold;
+}
+div#wrapper {
+	background: url(images/main_bg_pattern.png) repeat left top;
+}
+
+div#header #shadow {
+	background:url(images/shadow_4IE.png) repeat-x top;
+}
+div.sec_button .button{
+	width:186px;
+	height:81px;
+	background:url(images/button_4IE.png) no-repeat left top;
+}
+
+.button .inset {
+	display:none;
+}
+.button .button_sign {
+	right: 1px;
+}
+
+div.copyleft span {
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+#vertical_nav .bullet {
+		background:url(images/def_bullet_4IE.png) no-repeat right top;
+		margin-top:6px;
+		z-index:100;
+}
+#vertical_nav .bullet:hover {
+		background:url(images/act_bullet_4IE.png) no-repeat right top;
+	}
+#vertical_nav .active {
+	background: url(images/act_bullet_4IE.png) no-repeat right top !important;
+}
