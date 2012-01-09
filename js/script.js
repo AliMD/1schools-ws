@@ -65,6 +65,8 @@ $(function(){
 
 //	Scroll to Hash	////////////////////////////////
 	$("a[href*='#']").click(function(){
+			changeNavClass($(this).attr('href'));	//	Change Navigation Link Class to "active"
+			
 			pos=(id=$(this).attr('href')).length>1?1:0;	
 			scrollToId(pos?id:'#wrapper',{
 				topspace:$('#header').height(),
@@ -85,10 +87,6 @@ $(function(){
 	window.onhashchange = function() {
 		changeNavClass(window.location.hash);
 	};
-
-	$('.navigation a').click(function(){
-		changeNavClass($(this).attr('href'));
-	});
 ////////////////////////////////////////////////////
 
 //	Vertical Navigation		////////////////////////
