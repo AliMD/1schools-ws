@@ -94,6 +94,7 @@ $(function(){
 				'opacity':1,
 				'-moz-opacity':1,
 				'-webkit-opacity':1,
+				'-khtml-opacity':1,
 				'-o-opacity':1,
 				'-ms-opacity':1,
 			},2000,'easeOutExpo');
@@ -103,6 +104,7 @@ $(function(){
 				'opacity':0,
 				'-moz-opacity':0,
 				'-webkit-opacity':0,
+				'-khtml-opacity':0,
 				'-o-opacity':0,
 				'-ms-opacity':0,
 			},2000,'easeOutExpo');	//addClass('hidden')? how?? it should be changed!
@@ -119,6 +121,7 @@ $(function(){
 			'opacity':1,
 			'-moz-opacity':1,
 			'-webkit-opacity':1,
+			'-khtml-opacity':1,
 			'-o-opacity':1,
 			'-ms-opacity':1,
 		},500);
@@ -127,6 +130,7 @@ $(function(){
 			'opacity':0,
 			'-moz-opacity':0,
 			'-webkit-opacity':0,
+			'-khtml-opacity':0,
 			'-o-opacity':0,
 			'-ms-opacity':0,
 		},500);	//addClass('hidden')? how?? it should be changed!
