@@ -273,7 +273,8 @@ ul#vertical_nav {
 	}
 	
 	#vertical_nav div.title {
-		width:131px;
+		/*width:131px;*/	/* original width! */
+		width:121px;
 		height:24px;
 		margin-right:12px;
 		opacity:0;
