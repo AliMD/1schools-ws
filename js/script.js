@@ -86,10 +86,9 @@ $(function(){
 	$("#vertical_nav").css({
 			top: vt_sp+'px'
 	});
-	
+
 	$(window).scroll(function(){
 		if($(window).scrollTop() > 200) {
-	
 			$("#vertical_nav").removeClass('hidden').stop().animate({
 				top:($(window).scrollTop() + vt_sp) +'px',
 				'opacity':1,
@@ -99,7 +98,6 @@ $(function(){
 				'-ms-opacity':1,
 			},2000,'easeOutExpo');
 		}else{
-			var i=0;
 			$("#vertical_nav").stop().animate({
 				top:($(window).scrollTop() + vt_sp) +'px',
 				'opacity':0,
@@ -110,9 +108,7 @@ $(function(){
 			},2000,'easeOutExpo');	//addClass('hidden')? how?? it should be changed!
 			
 			function hideobj(){
-				if(i==0 && $(window).scrollTop() < 200) $("#vertical_nav").addClass('hidden');
-			//	console.log(i);
-				return false;
+				if($(window).scrollTop() < 200) $("#vertical_nav").addClass('hidden');
 			}
 			setTimeout(hideobj,2000);	//raveshe goosfandi! chekaresh konim? :D
 		}
