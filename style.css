@@ -233,7 +233,7 @@ div#footer {
 /*	- Footer Section	*/
 
 /*	+ Vertical Navigation	*/
-ul#vertical_nav {
+#vertical_nav {
 	/*width:12px;*/
 	min-height:120px;
 	position:absolute;
@@ -244,12 +244,11 @@ ul#vertical_nav {
 	-ms-opacity:0;
 	-o-opacity:0;
 	-webkit-opacity:0;
-	z-index:100;
 }
 #vertical_nav .section {
 	position:relative;
 	min-height:24px;
-	
+	z-index:100;
 }
 	#vertical_nav .bullet {
 		width:12px;
