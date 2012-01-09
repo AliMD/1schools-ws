@@ -75,10 +75,19 @@ $(function(){
 ////////////////////////////////////////////////////
 
 //	Change Navigation Link Class	////////////////
-	$('.navigation ul li').children('a').click(function(){
-		$('.navigation ul li').children('a').removeClass('active');
-		$(this).addClass('active');
-	})
+	changeNavClass = function(url){
+		$('.navigation a').removeClass('active').each(function(){
+			if($(this).attr('href')==url) $(this).addClass('active');
+		});
+	}
+	
+	window.onhashchange = function() {
+		changeNavClass(window.location.hash);
+	};
+
+	$('.navigation a').click(function(){
+		changeNavClass($(this).attr('href'));
+	});
 ////////////////////////////////////////////////////
 
 //	Vertical Navigation		////////////////////////
@@ -124,6 +133,7 @@ $(function(){
 			'-khtml-opacity':1,
 			'-o-opacity':1,
 			'-ms-opacity':1,
+			'width':131+'px'
 		},500);
 	},function(){
 		$(this).next('.title').stop().animate({
@@ -133,10 +143,8 @@ $(function(){
 			'-khtml-opacity':0,
 			'-o-opacity':0,
 			'-ms-opacity':0,
+			'width':121+'px'
 		},500);	//addClass('hidden')? how?? it should be changed!
-	}).click(function(){
-		$("#vertical_nav .bullet").removeClass('active');	
-		$(this).addClass('active');
 	});
 ////////////////////////////////////////////////////
 	
