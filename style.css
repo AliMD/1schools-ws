@@ -194,7 +194,6 @@ div#footer {
 		div.navigation ul a {
 			padding:0 5px 0 11px;
 		/*	padding:0 8px;	*/
-			display:inline;
 			color: #fff;
 			text-decoration:none;
 		}
@@ -245,6 +244,7 @@ ul#vertical_nav {
 	-ms-opacity:0;
 	-o-opacity:0;
 	-webkit-opacity:0;
+	z-index:100;
 }
 #vertical_nav .section {
 	position:relative;
@@ -263,7 +263,6 @@ ul#vertical_nav {
 		-o-border-radius:6px;
 		-webkit-border-radius:6px;
 		-ms-border-radius:6px;
-		z-index:100;
 	}
 	#vertical_nav .bullet:hover {
 		background-color:#79cb37;
@@ -283,6 +282,7 @@ ul#vertical_nav {
 		-ms-opacity:0;
 		-o-opacity:0;
 		-webkit-opacity:0;
+		overflow:hidden;
 	}
 	#vertical_nav .title div.main {
 		width:100px;
@@ -295,6 +295,7 @@ ul#vertical_nav {
 		font-family: 'yekan', Arial;
 		font-size:17px;
 		margin:2px 22px 0 0;
+		cursor:default;
 		-webkit-user-select: none;
 		-khtml-user-select: none;
 		-moz-user-select: none;
