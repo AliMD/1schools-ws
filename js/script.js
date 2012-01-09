@@ -59,6 +59,7 @@ $(function(){
 		if($(window).scrollTop() > minHeight){
 			scrollToId('#wrapper');
 		}
+		$('.navigation a').removeClass('active')		
 	})
 ////////////////////////////////////////////////////
 
