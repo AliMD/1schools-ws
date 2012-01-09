@@ -233,7 +233,7 @@ div#footer {
 /*	- Footer Section	*/
 
 /*	+ Vertical Navigation	*/
-div#vertical_nav {
+ul#vertical_nav {
 	/*width:12px;*/
 	min-height:120px;
 	position:absolute;
@@ -244,7 +244,7 @@ div#vertical_nav {
 	-o-opacity:0;
 	-webkit-opacity:0;
 }
-div#vertical_nav .section {
+#vertical_nav .section {
 	position:relative;
 	min-height:24px;
 	
@@ -266,11 +266,11 @@ div#vertical_nav .section {
 		background-color:#79cb37;
 	}
 	
-	div#vertical_nav .active {
+	#vertical_nav .active {
 		background-color:#79cb37;
 	}
 	
-	div#vertical_nav div.title {
+	#vertical_nav div.title {
 		width:131px;
 		height:24px;
 		margin-right:12px;
@@ -280,12 +280,12 @@ div#vertical_nav .section {
 		-o-opacity:0;
 		-webkit-opacity:0;
 	}
-	div#vertical_nav .title div.main {
+	#vertical_nav .title div.main {
 		width:100px;
 		height:24px;
 		background-color:#a3cb83;
 	}
-	div#vertical_nav .title div.main span {
+	#vertical_nav .title div.main span {
 		display:block;
 		color:#FFF;
 		font-family: 'yekan', Arial;
@@ -297,7 +297,7 @@ div#vertical_nav .section {
 		
 		*/
 	}
-	div#vertical_nav .title div.arrow {
+	#vertical_nav .title div.arrow {
 		width:0;
 		height:0;
 		border-width: 12px 8px;
@@ -446,7 +446,7 @@ div#container div.centerbox {
 			height:68px;
 			margin:5px auto;
 			background-color:#FFF;
-			background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(0,0,0,0.1)), color-stop(1,#333333)); /* some HACK accured? :D I dunno ;) */
+			background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(0,0,0,0.1)));
 			background-image:-webkit-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 			background-image:-o-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 			background-image:-moz-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
