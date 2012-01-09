@@ -218,6 +218,7 @@ div#footer {
 		color:#444;
 	}
 		div.copyleft span {
+			-khtml-transform: rotate(180deg);
 			-webkit-transform: rotate(180deg);
 			-moz-transform: rotate(180deg);
 			-o-transform: rotate(180deg);
@@ -239,6 +240,7 @@ ul#vertical_nav {
 	position:absolute;
 	right:30px;
 	opacity:0;
+	-khtml-opacity:0;
 	-moz-opacity:0;
 	-ms-opacity:0;
 	-o-opacity:0;
@@ -256,6 +258,7 @@ ul#vertical_nav {
 		background-color:#a3cb83;
 		margin-top:6px;
 		border-radius:6px;
+		-khtml-border-radius:6px;
 		-moz-border-radius:6px;
 		-o-border-radius:6px;
 		-webkit-border-radius:6px;
@@ -275,6 +278,7 @@ ul#vertical_nav {
 		height:24px;
 		margin-right:12px;
 		opacity:0;
+		-khtml-opacity:0;
 		-moz-opacity:0;
 		-ms-opacity:0;
 		-o-opacity:0;
@@ -291,6 +295,12 @@ ul#vertical_nav {
 		font-family: 'yekan', Arial;
 		font-size:17px;
 		margin:2px 22px 0 0;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		-o-user-select: none;
+		user-select: none;
 	/*	
 		font-size:17px;
 		margin:3px 22px 0 0;
@@ -423,17 +433,20 @@ div#container div.centerbox {
 			width:184px;
 			height:78px;
 			background-color:#f2f2f2;
+			background-image:-khtml-gradient(linear,left top,left bottom, from(#fff), to(#e7e7e7));
 			background-image:-webkit-gradient(linear,left top,left bottom, from(#fff), to(#e7e7e7));
 			background-image:-webkit-linear-gradient(top, #fff, #e7e7e7);
 			background-image:-o-linear-gradient(top, #fff, #e7e7e7);
 			background-image:-moz-linear-gradient(top, #fff, #e7e7e7);
 			background-image:-ms-linear-gradient(top, #fff, #e7e7e7);
 			background-image:linear-gradient(top, #fff, #e7e7e7);
+			-khtml-border-radius:5px;
 			-moz-border-radius:5px;
 			-webkit-border-radius:5px;
 			-o-border-radius:5px;
 			-ms-border-radius:5px;
 			border-radius:5px;
+			-khtml-box-shadow:1px 2px 2px rgba(0, 0, 0, 0.3);
 			-webkit-box-shadow:1px 2px 2px rgba(0, 0, 0, 0.3);
 			-moz-box-shadow:1px 2px 2px rgba(0, 0, 0, 0.3);
 			-o-box-shadow:1px 2px 2px rgba(0, 0, 0, 0.3);
@@ -446,12 +459,14 @@ div#container div.centerbox {
 			height:68px;
 			margin:5px auto;
 			background-color:#FFF;
+			background-image:-khtml-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(0,0,0,0.1)));
 			background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(0,0,0,0.1)));
 			background-image:-webkit-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 			background-image:-o-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 			background-image:-moz-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 			background-image:-ms-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
 			background-image:linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,0.1));
+			-khtml-box-shadow:inset 0 0 22px rgba(0, 0, 0, 0.065);
 			-webkit-box-shadow:inset 0 0 22px rgba(0, 0, 0, 0.065);
 			-moz-box-shadow:inset 0 0 22px rgba(0, 0, 0, 0.065);
 			-o-box-shadow:inset 0 0 22px rgba(0, 0, 0, 0.065);
