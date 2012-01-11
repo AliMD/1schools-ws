@@ -3,7 +3,7 @@
 body {
 	font-weight:bold;
 }
-div#wrapper {
+div#home {
 	background: url(images/main_bg_pattern.png) repeat left top;
 }
 
@@ -30,7 +30,6 @@ div.copyleft span {
 #vertical_nav .bullet {
 	background:url(images/def_bullet_4IE.png) no-repeat right top;
 	margin-top:6px;
-	z-index:100;
 }
 #vertical_nav .bullet:hover {
 	background:url(images/act_bullet_4IE.png) no-repeat right top;
