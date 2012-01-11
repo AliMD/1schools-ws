@@ -99,12 +99,14 @@ a {
 @font-face {
 	font-family: 'yekan';
 	src:
+		url('fonts/yekan.eot?#') format('eot');
+	src:
 		local('B Yekan'),
 		local('BYekan'),
-		local('X Yekan'),
-		url('fonts/yekan.eot?#') format('eot'),
-		url('fonts/yekan.afm'),
-		url('fonts/yekan.ttf') format("truetype");
+		local('byekan'),
+		url('fonts/yekan.woff') format('woff'),
+		url('fonts/yekan.ttf') format("truetype")
+		url('fonts/yekan.afm');
 	font-weight:normal;
 	font-style:normal;
 }
@@ -292,7 +294,7 @@ div#footer {
 	#vertical_nav .title div.main span {
 		display:block;
 		color:#FFF;
-		font-family: 'yekan', Arial;
+		font-family: 'yekan',Arial;
 		font-size:17px;
 		margin:2px 22px 0 0;
 		cursor:default;
@@ -381,7 +383,7 @@ div#container div.centerbox {
 /*	-	Center slider	*/
 
 	div#container div.section {
-		font-family: 'yekan', Arial;
+		font-family: 'yekan',Arial;
 	}
 		div.sec_main {
 			padding-top:20px;
