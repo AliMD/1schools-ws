@@ -57,7 +57,7 @@ $(function(){
 	
 	$('#header').click(function(){
 		if($(window).scrollTop() > minHeight){
-			scrollToId('#wrapper');
+			scrollToId('#home');
 		}
 		$('.navigation a').removeClass('active')		
 	})
@@ -65,19 +65,20 @@ $(function(){
 
 //	Scroll to Hash	////////////////////////////////
 	$("a[href*='#']").click(function(){
-			changeNavClass($(this).attr('href'));	//	Change Navigation Link Class to "active"
+			//changeNavClass($(this).attr('href'));		// It's an option, if window.onhashchange not used. 
 			
-			pos=(id=$(this).attr('href')).length>1?1:0;	
-			scrollToId(pos?id:'#wrapper',{
+			pos=(id=$(this).attr('href')).length>1?$(id).offset().top>0?1:0:undefined;
+			scrollToId(pos===undefined?'#home':id,{
 				topspace:$('#header').height(),
-				effect:pos?'easeOutBack':'easeInBack',
+				effect:pos?'easeOutBack':'easeOutQuint',
 				speed:1500
 			});	
-			if(!pos)return false;	// or "return false" for all cases ?
+			if(pos===undefined)return false;	// or "return false" for all cases ?
 	});
 ////////////////////////////////////////////////////
 
 //	Change Navigation Link Class	////////////////
+
 	changeNavClass = function(url){
 		$('.navigation a').removeClass('active').each(function(){
 			if($(this).attr('href')==url) $(this).addClass('active');
@@ -85,7 +86,7 @@ $(function(){
 	}
 	
 	window.onhashchange = function() {
-		changeNavClass(window.location.hash);
+		changeNavClass(window.location.hash);	//	Change Navigation Link Class to "active"
 	};
 ////////////////////////////////////////////////////
 
@@ -115,12 +116,9 @@ $(function(){
 				'-khtml-opacity':0,
 				'-o-opacity':0,
 				'-ms-opacity':0,
-			},2000,'easeOutExpo');	//addClass('hidden')? how?? it should be changed!
-			
-			function hideobj(){
-				if($(window).scrollTop() < 200) $("#vertical_nav").addClass('hidden');
-			}
-			setTimeout(hideobj,2000);	//raveshe goosfandi! chekaresh konim? :D
+			},2000,'easeOutExpo',function(){
+				$(this).addClass('hidden');	//Hiding the vertical navigation to prevent clicking
+			});
 		}
 	});	
 	
@@ -143,8 +141,9 @@ $(function(){
 			'-o-opacity':0,
 			'-ms-opacity':0,
 			'width':121+'px'
-		},500);	//addClass('hidden')? how?? it should be changed!
+		},500,function(){
+			$(this).addClass('hidden');	//Hiding the section title
+		});
 	});
 ////////////////////////////////////////////////////
-	
 });
