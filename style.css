@@ -1,5 +1,4 @@
 @charset "utf-8";
-/* CSS Document */
 
 /*	+ CSS RESET  By Eric Meyer	*/
 html, body, div, span, applet, object, iframe,
@@ -105,7 +104,7 @@ a {
 		local('BYekan'),
 		local('byekan'),
 		url('fonts/yekan.woff') format('woff'),
-		url('fonts/yekan.ttf') format("truetype")
+		url('fonts/yekan.ttf') format("truetype"),
 		url('fonts/yekan.afm');
 	font-weight:normal;
 	font-style:normal;
