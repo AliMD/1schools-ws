@@ -105,7 +105,7 @@ a {
 		local('BYekan'),
 		local('byekan'),
 		url('fonts/yekan.woff') format('woff'),
-		url('fonts/yekan.ttf') format("truetype"),
+		url('fonts/yekan.ttf') format("truetype")
 		url('fonts/yekan.afm');
 	font-weight:normal;
 	font-style:normal;
