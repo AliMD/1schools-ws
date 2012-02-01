@@ -383,6 +383,8 @@ div#container div.centerbox {
 
 	div#container div.section {
 		font-family: 'yekan',Arial;
+		border-top-color: transparent;
+		border-top-style: solid;
 	}
 		div.sec_main {
 			padding-top:20px;

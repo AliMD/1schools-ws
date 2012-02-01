@@ -12,9 +12,9 @@ $(function(){
 			return Math.round(($(prnt).width()-$(elm).width())/2);
 		}
 	}
-////////////////////////////////////////////////////	
+////////////////////////////////////////////////////
 
-// Sync the Begining section	////////////////////	
+// Sync the Begining section	////////////////////
 	var redElmArr = new Array('#header','#footer'), redHeight=0;
 	for(x in redElmArr){
 		redHeight+=$(redElmArr[x]).height();
@@ -31,11 +31,14 @@ $(function(){
 		});
 	})();
 	$(window).resize(syncSlider);
-
 ////////////////////////////////////////////////////
 
-// Vertical Scroller	////////////////////////////	
-	function scrollToId(id,usroption){
+// Sync the content sections	////////////////////
+	$('div.centerbox').children('.section').css('border-top-width',$('#header').height()+'px');
+////////////////////////////////////////////////////
+
+// Vertical Scroller	////////////////////////////
+	function scrollToId(id,usroption,callback){
 		var option = {
 			topspace : 0,
 			speed : 1500,
@@ -47,7 +50,7 @@ $(function(){
 		
 		$(elmnt).stop().animate({
 			scrollTop: $(id).offset().top-option.topspace
-		},option.speed,option.effect);	
+		},option.speed,option.effect,callback);
 	}
 ////////////////////////////////////////////////////
 
@@ -64,21 +67,21 @@ $(function(){
 ////////////////////////////////////////////////////
 
 //	Scroll to Hash	////////////////////////////////
-	$("a[href*='#']").click(function(){
-			//changeNavClass($(this).attr('href'));		// It's an option, if window.onhashchange not used. 
+	$("a[href*='#']").click(function(e){
+		//	changeNavClass($(this).attr('href'));		// It's an option, if window.onhashchange not used. 
 			
+			e.preventDefault();
 			pos=(id=$(this).attr('href')).length>1?$(id).offset().top>0?1:0:undefined;
 			scrollToId(pos===undefined?'#home':id,{
-				topspace:$('#header').height(),
 				effect:pos?'easeOutBack':'easeOutQuint',
 				speed:1500
+			},function(){	// callback function
+				location.hash = id.replace('#','');
 			});	
-			if(pos===undefined)return false;	// or "return false" for all cases ?
 	});
 ////////////////////////////////////////////////////
 
 //	Change Navigation Link Class	////////////////
-
 	changeNavClass = function(url){
 		$('.navigation a').removeClass('active').each(function(){
 			if($(this).attr('href')==url) $(this).addClass('active');
@@ -86,7 +89,7 @@ $(function(){
 	}
 	
 	window.onhashchange = function() {
-		changeNavClass(window.location.hash);	//	Change Navigation Link Class to "active"
+		changeNavClass(window.location.hash);	// Change Navigation Link Class to "active"
 	};
 ////////////////////////////////////////////////////
 
@@ -117,7 +120,7 @@ $(function(){
 				'-o-opacity':0,
 				'-ms-opacity':0,
 			},2000,'easeOutExpo',function(){
-				$(this).addClass('hidden');	//Hiding the vertical navigation to prevent clicking
+				$(this).addClass('hidden');	// Hiding the vertical navigation to prevent clicking
 			});
 		}
 	});	
@@ -142,7 +145,7 @@ $(function(){
 			'-ms-opacity':0,
 			'width':121+'px'
 		},500,function(){
-			$(this).addClass('hidden');	//Hiding the section title
+			$(this).addClass('hidden');	// Hiding the section title
 		});
 	});
 ////////////////////////////////////////////////////
