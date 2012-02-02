@@ -2,12 +2,12 @@
 $(function(){
 	
 // being at the middle of the parent element 	////
-	fit2parent = new function(){
-		this.vspace = function(elm,prnt){
+	var fit2parent = {
+		vspace: function(elm,prnt){
 			prnt=prnt===undefined?$(elm).parent():prnt;
 			return Math.round(($(prnt).height()-$(elm).height())/2);
-		}
-		this.hspace = function(elm,prnt){
+		},
+		hspace: function(elm,prnt){
 			prnt=prnt===undefined?$(elm).parent():prnt;
 			return Math.round(($(prnt).width()-$(elm).width())/2);
 		}
@@ -34,7 +34,8 @@ $(function(){
 ////////////////////////////////////////////////////
 
 // Sync the content sections	////////////////////
-	$('div.centerbox').children('.section').css('border-top-width',$('#header').height()+'px');
+	$('div.centerbox').children('.section').css('padding-top',$('#header').height()+'px');
+	(intxt=$('div.contactbox').children('.inner')).css('margin-top',fit2parent.vspace(intxt)+'px');
 ////////////////////////////////////////////////////
 
 // Vertical Scroller	////////////////////////////
@@ -56,28 +57,30 @@ $(function(){
 
 //	Scroll to Top	////////////////////////////////
 	var minHeight=300;
-	$('.title_logo').children('a').click(function(){ return false });
+	$('.title_logo').children('a').click(function(e){ e.preventDefault(); });
 	
 	$('#header').click(function(){
 		if($(window).scrollTop() > minHeight){
-			scrollToId('#home');
+			scrollToId('#home',null,function(){
+				$('.navigation a').removeClass('active');
+				location.hash='home';
+			});
 		}
-		$('.navigation a').removeClass('active')		
 	})
 ////////////////////////////////////////////////////
 
 //	Scroll to Hash	////////////////////////////////
 	$("a[href*='#']").click(function(e){
-		//	changeNavClass($(this).attr('href'));		// It's an option, if window.onhashchange not used. 
-			
-			e.preventDefault();
-			pos=(id=$(this).attr('href')).length>1?$(id).offset().top>0?1:0:undefined;
-			scrollToId(pos===undefined?'#home':id,{
-				effect:pos?'easeOutBack':'easeOutQuint',
-				speed:1500
-			},function(){	// callback function
-				location.hash = id.replace('#','');
-			});	
+		e.preventDefault();
+		pos=(id=$(this).attr('href')).length>1?$(id).offset().top>0?1:0:undefined;
+		changeNavClass(id);		// It's an option, window.onhashchange also calls this function, but with a delay...
+		
+		scrollToId(pos===undefined?'#home':id,{
+			effect:pos?'easeOutBack':'easeOutQuint',
+			speed:1500
+		},function(){	// callback function
+			location.hash = id.substr(1);
+		});
 	});
 ////////////////////////////////////////////////////
 
@@ -86,10 +89,13 @@ $(function(){
 		$('.navigation a').removeClass('active').each(function(){
 			if($(this).attr('href')==url) $(this).addClass('active');
 		});
-	}
+	};
+	changeNavClass(window.location.hash);	// for instant accessing to a section.
 	
-	window.onhashchange = function() {
-		changeNavClass(window.location.hash);	// Change Navigation Link Class to "active"
+	window.onhashchange = function() {		// specially to apply the commands by using back/next buttons.
+		var h=window.location.hash;
+		changeNavClass(h);					// Change Navigation Link Class to "active".
+		window.location.href=h;				// to fix viewing sections by next/forward.
 	};
 ////////////////////////////////////////////////////
 

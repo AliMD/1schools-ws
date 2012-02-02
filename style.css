@@ -383,8 +383,6 @@ div#container div.centerbox {
 
 	div#container div.section {
 		font-family: 'yekan',Arial;
-		border-top-color: transparent;
-		border-top-style: solid;
 	}
 		div.sec_main {
 			padding-top:20px;
@@ -527,4 +525,64 @@ div#container div.centerbox {
 		height:354px;
 		background-image:url(images/web_section_image.png);
 	}
+	
+	#register div.regbox {
+		margin: 30px auto 0 auto;
+		position:relative;
+		width:600px;
+		height:400px;
+		border:rgba(57,57,57,0.6) 10px dashed\0/;	/* IE8-9 */
+		border-radius:50px\0/;						/* IE8-9 */
+		border-width: 50px 80px;
+		-moz-border-image: url(images/regbox_border.png) 44 71 round;
+		-webkit-border-image: url(images/regbox_border.png) 44 71 round;
+		-o-border-image: url(images/regbox_border.png) 44 71 round;
+		border-image: url(images/regbox_border.png) 44 71 round;
+		
+	}
+		div.regbox .icon {
+			position:absolute;
+			width:111px;
+			height:288px;
+			top:20px;
+			right:-183px;
+			background:url(images/scissors.png) right top no-repeat;
+		}
+		
+	#contact div.contactbox {
+		line-height:170%;
+		width:750px;
+		margin: 30px auto 0 auto;
+		display:table;
+	}
+		div.contactbox .inner {
+			margin-right:420px;
+		}
+		div.contactbox .inner h3 {
+			color: #3b78c6;
+			padding-bottom:7px;
+		}
+		div.contactbox .inner p {
+			font-size:17px;
+			color: #f73c6d;
+			padding-right:10px;
+		}
+		div.contactbox .inner p span {
+			margin:auto 5px;
+		}
+		div.contactbox > img {
+			float:right;
+			border:#9e9e9e 2px solid;
+			-webkir-border-radius:9px;
+			-moz-border-radius:9px;
+			-o-border-radius:9px;
+			-ms-border-radius:9px;
+			border-radius:9px;
+		}
+		div#circles {
+			width:712px;
+			height:136px;
+			margin:0 auto -39px auto;
+			background:url(images/end_circles.png) left top no-repeat;
+		}
 /*	- Container Section	*/
