@@ -1,4 +1,13 @@
 // JavaScript Document
+// loading part
+$(window).load(function() {
+		$("#loading").animate({
+			top: '-=100%',
+		  },4000,function(){
+			  $('body').css("overflowY","auto");
+		  });	
+});
+
 $(function(){
 	
 // being at the middle of the parent element 	////
