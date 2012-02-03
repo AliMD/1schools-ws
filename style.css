@@ -344,13 +344,13 @@ div#container div.centerbox {
 		div.right_sec div#brwsrs_msg {
 			display:none;
 			position:absolute;
-			right:50px;
+			right:20px;
 			top:223px;
 		}
 			h2.brwsrs_msg a {
 				display:none;
 				display:block;
-				width:238px;
+				width:265px;
 				height:22px;
 				background:url(images/to_be_web_pro.png) no-repeat right top;
 			}
@@ -365,12 +365,12 @@ div#container div.centerbox {
 		div.left_sec div#mobs_msg {
 			display:none;
 			position:absolute;
-			left:4px;
+			left:-26px;
 			top:216px;
 		}
 			h2.mobs_msg a {
 				display:block;
-				width:277px;
+				width:303px;
 				height:29px;
 				background:url(images/to_be_mobile_pro.png) no-repeat left top;
 		}
