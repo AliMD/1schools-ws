@@ -1,13 +1,78 @@
 // JavaScript Document
 // loading part
+
+
+
+
 $(window).load(function() {
-		$("#loading").animate({
-			top: '-=100%',
-		  },4000,function(){
-			  $('body').css("overflowY","auto");
-		  });	
+		typwriter('#slide-client',"$ 1Devs -m run GUI for 'loading'          ",0);
+		$('body').css("overflowY","auto");
+
 });
 
+
+function guiloader(){
+	
+	
+	$('#loadtop').delay(1000).toggle(500,function(){
+		
+		$("#loading").delay(3000).animate({
+			top: '-=100%',
+		  },4000);	
+		  
+		  $('#slider .right_sec').delay(4000).animate({
+				'background-position-x':'0px'
+				},1000,function(){
+					$('.right_sec #brwsrs_msg').fadeIn(1000);
+		  });
+		  $('#slider .left_sec').delay(4000).animate({
+				'background-position-x':'305px'
+				},1000,function(){
+					$('.left_sec #mobs_msg').fadeIn(1000);
+		   });
+		 
+	});
+}
+
+///////////////////////////////////////
+// typewriter function
+
+
+function typwriter(el,text,pos,no){
+  ctext=text.substring(0,pos)+(pos%2?'_':'<blink>_</blink>');
+  $(el).html(ctext);
+
+if(pos==42){
+$(el).html("$ 1Devs -m run GUI for 'loading'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 file(s) found for loading gui.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP://1schools.com/ run loading part<span id=\"slide-client2\"><blink>_</blink></span><br />");
+typwriter('#slide-client2',"<br /><br />Running index.html",0,2);
+}
+else
+  if(pos==text.length){
+   $(el).html(text+"<blink>_</blink>");
+   
+   if(text=="<br /><br />Running index.html"){ 
+   		guiloader()
+   };
+   }
+  else
+   window.setTimeout('typwriter("'+el+'","'+text+'",'+(pos+1)+','+1+');',100);
+ }
+
+///////////////////////////////////////
+
+
+
+
+$(window).load(function() {
+	
+		
+		
+
+});
+
+
+
+////////////////////////////////////////////////////
 $(function(){
 	
 // being at the middle of the parent element 	////
