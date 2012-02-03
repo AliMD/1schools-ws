@@ -610,7 +610,7 @@ div#container div.centerbox {
 	z-index:100001;
 	background:#000;
 	direction:ltr;
-	font-family:Verdana, Geneva, sans-serif;
+	font-family:monospace, Geneva, sans-serif;
 	font-size:13px;
 	color:#fff;
 	padding:5px;
