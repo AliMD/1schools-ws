@@ -167,12 +167,12 @@ div#wrapper-right {
   to { -webkit-transform: rotate(0deg); }
 }
 
-@-moz-keyframes spin {
+@-moz-keyframes clockspin {
   from { -moz-transform: rotate(360deg); }
   to { -moz-transform: rotate(0deg); }
 }
 
-@-ms-keyframes spin {
+@-ms-keyframes clockspin {
   from { -ms-transform: rotate(360deg); }
   to { -ms-transform: rotate(0deg); }
 }
@@ -216,13 +216,13 @@ div#wrapper-right {
   -webkit-animation-timing-function: linear;
   
   /* mozilla ff */
-  -moz-animation-name: spin; 
+  -moz-animation-name: clockspin; 
   -moz-animation-duration: 3000ms; /* 40 seconds */
   -moz-animation-iteration-count: infinite; 
   -moz-animation-timing-function: linear;
   
   /* microsoft ie */
-  -ms-animation-name: spin; 
+  -ms-animation-name: clockspin; 
   -ms-animation-duration: 3000ms; /* 40 seconds */
   -ms-animation-iteration-count: infinite; 
   -ms-animation-timing-function: linear;
