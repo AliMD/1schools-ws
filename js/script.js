@@ -144,7 +144,7 @@ function typwriter(el,text,pos,no){
 			if(frm.elements[key].onblur) frm.elements[key].onblur();
 		};
 		if(valid){
-			ajaxSubmit(this);
+			ajaxSubmit(frm);
 		};
 		return false;
 	};
