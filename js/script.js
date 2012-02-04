@@ -335,7 +335,8 @@ $(function(){
 
 //	Ajax Form Functions	////////////////////////////
 	$('#reCaptcha').css('cursor','pointer').click(function(){
-		$('input#captcha').css("background-image","url(captcha.jpg)");
+		var d=new Date();
+		$('input#captcha').css("background-image","url(captcha.jpg?"+d.getTime()+")");
 	});
 	
 	$('div.radio').click(function(){
