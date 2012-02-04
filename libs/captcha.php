@@ -1,48 +1,38 @@
 <?php
 session_start();
-
-class CaptchaSecurityImages {
-
-	var $font = '../fonts/yekan.ttf';
-
-	function generateCode($characters) {
-		/* list all possible characters, similar looking characters and vowels have been removed */
-		$possible = '0123456789';
-		$code = '';
-		$i = 0;
-		while ($i < $characters) { 
-			$code .= substr($possible, mt_rand(0, strlen($possible)-1), 1);
-			$i++;
-		}
-		return $code;
+function gen_random_string($length){
+	$characters = "0123456789";
+	$real_string_length = strlen($characters) - 1;
+	for($p=0;$p<$length;$p++){
+		$string .= $characters[mt_rand(0, $real_string_length)];
 	}
+	return $string;
+}
+$sec_code = gen_random_string(7);
+$text_array = str_split($sec_code);
+
+$NewImage = @imagecreate(120, 30) or die('Cannot initialize new GD image stream');
+$background_color = imagecolorallocate($NewImage, 255, 255, 255);
+
+$cntr=0;
+foreach($text_array as $letter){
+	$textcolor = imagecolorallocate($NewImage, rand(0,200), rand(0,200), rand(0,200));
+	$spacing = (rand(1,2)+2*($cntr*8));
 	
-	function CaptchaSecurityImages($width,$height,$characters) {
-		$code = $this->generateCode($characters);
-		
-		/* font size will be 70% of the image height */
-		$font_size = $height * 0.7;
-		$image = @imagecreate($width, $height) or die('Cannot initialize new GD image stream');
-		
-		/* set the colours */
-		$background_color = imagecolorallocate($image, 255, 255, 255);
-		$text_color = imagecolorallocate($image, mt_rand(15,30), mt_rand(30,50), mt_rand(80,120));
-		$noise_color = imagecolorallocate($image, mt_rand(140,160), mt_rand(140,160), mt_rand(140,160));
-		
-		
-		/* create textbox and add text */
-		$textbox = imagettfbbox($font_size, 0, $this->font, $code) or die('Error in imagettfbbox function');
-		$x = ($width - $textbox[4])/2;
-		$y = ($height - $textbox[5])/2;
-		imagettftext($image, $font_size, 0, $x, $y, $text_color, $this->font , $code) or die('Error in imagettftext function');
-		
-		/* output captcha image to browser */
-		header('Content-Type: image/jpeg');
-		imagejpeg($image);
-		imagedestroy($image);
-		$_SESSION['security_code'] = $code;
-	}
+	imagestring($NewImage, 100, $spacing+6, rand(0,10)+3, $letter, $textcolor);
+	$cntr++;
 }
 
-$captcha = new CaptchaSecurityImages(120,30,7);
+header('Content-Type: image/jpeg');
+header("Cache-Control: no-cache");
+header("Pragma: no-cache");
+header('Expires: '.gmdate('r',time()+60*20));
+
+imagejpeg($NewImage);
+imagedestroy($NewImage);
+$_SESSION['security_code'] = $sec_code;
 ?>
+
+
+
+
