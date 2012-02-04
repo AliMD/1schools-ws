@@ -512,7 +512,6 @@ div#container div.centerbox {
 	/*	background:url(images/content_brwsrs_icon_2.png) no-repeat left 84px;*/ /* (old one!) */
 	}
 		div.right_sec div#brwsrs_msg {
-			display:none;
 			position:absolute;
 			right:20px;
 			top:223px;
@@ -532,7 +531,6 @@ div#container div.centerbox {
 		background-position:469px 84px;
 	}
 		div.left_sec div#mobs_msg {
-			display:none;
 			position:absolute;
 			left:-26px;
 			top:216px;

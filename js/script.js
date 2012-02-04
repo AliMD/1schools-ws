@@ -69,6 +69,8 @@
 
 //////////// first loading
 $(window).load(function() {
+		$('.right_sec #brwsrs_msg').hide();
+		$('.left_sec #mobs_msg').hide();
 		typwriter('#slide-client',"$ 1Devs -m run GUI for 'loading'          ",0);
 		$('body').css("overflow","auto");
 
