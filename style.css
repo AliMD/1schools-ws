@@ -856,10 +856,10 @@ div#container div.centerbox {
 				-webkit-box-shadow:inset 0 0 9px rgb(230,20,20) !important;
 			}
 			#regfrm input#captcha {
-				width:155px;
+				width:152px;
 				background-repeat:no-repeat;
-				padding-left:160px;
-				background-position:2px 12px;
+				padding-left:163px;
+				background-position:5px 12px;
 				background-image:url(captcha.jpg);
 				font-size:20px;
 				letter-spacing:5px;
@@ -873,7 +873,7 @@ div#container div.centerbox {
 					background:url(images/recaptcha.png) left top no-repeat;
 					position:absolute;
 					top:22px;
-					left:125px;
+					left:128px;
 				}
 			#regfrm div.radio {
 				display:inline-block;

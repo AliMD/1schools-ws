@@ -159,10 +159,12 @@ function typwriter(el,text,pos,no){
 			url : 'send',
 			data : sentData+'&submit=submit',
 			beforeSend : function(){
+				$('div.response').fadeOut(500);
 				$('div.loading').fadeIn(500);
 			},
 			success : function(data){
 				$('div.loading').fadeOut(500,function(){
+					$('div.response').fadeIn(500);
 					$('div.response').html(data);
 				});
 			}

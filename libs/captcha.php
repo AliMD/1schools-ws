@@ -26,7 +26,6 @@ foreach($text_array as $letter){
 header('Content-Type: image/jpeg');
 header("Cache-Control: no-cache");
 header("Pragma: no-cache");
-header('Expires: '.gmdate('r',time()+60*20));
 
 imagejpeg($NewImage);
 imagedestroy($NewImage);
