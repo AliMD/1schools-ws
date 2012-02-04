@@ -1,11 +1,9 @@
 // JavaScript Document
 // loading part
 
-
 /////////////
 // background position have bug in FF and IE6 so, this jquery-plug-in added
 /////////////
-
 (function($) {
 	if(!document.defaultView || !document.defaultView.getComputedStyle){ // IE6-IE8
 		var oldCurCSS = $.curCSS;
@@ -69,24 +67,15 @@
 })(jQuery);
 
 
-
-
-
-
 //////////// first loading
-
 $(window).load(function() {
 		typwriter('#slide-client',"$ 1Devs -m run GUI for 'loading'          ",0);
-		$('body').css("overflowY","auto");
+		$('body').css("overflow","auto");
 
 });
 
-
 function guiloader(){
-	
-	
 	$('#loadtop').delay(1000).toggle(500,function(){
-		
 		$("#loading").delay(3000).animate({
 			top: '-=100%',
 		  },4000);	
@@ -103,47 +92,86 @@ function guiloader(){
 				},1000,function(){
 					$('.left_sec #mobs_msg').fadeIn(1000);
 		   });
-		 
 	});
-}
+};
+////////////////////////////////////////////////////
 
-///////////////////////////////////////
-// typewriter function
-
-
+//	typewriter function	////////////////////////////
 function typwriter(el,text,pos,no){
-  ctext=text.substring(0,pos)+(pos%2?'_':'<blink>_</blink>');
-  $(el).html(ctext);
+	ctext=text.substring(0,pos)+(pos%2?'_':'<blink>_</blink>');
+	$(el).html(ctext);
 
-if(pos==42){
-$(el).html("$ 1Devs -m run GUI for 'loading'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 file(s) found for loading gui.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP://1schools.com/ run loading part<span id=\"slide-client2\"><blink>_</blink></span><br />");
-typwriter('#slide-client2',"<br /><br />Running index.html",0,2);
+	if(pos==42){
+		$(el).html("$ 1Devs -m run GUI for 'loading'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 file(s) found for loading gui.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP://1schools.com/ run loading part<span id=\"slide-client2\"><blink>_</blink></span><br />");
+		typwriter('#slide-client2',"<br /><br />Running index.html",0,2);
+	}else if(pos==text.length){
+	   $(el).html(text+"<blink>_</blink>");
+	   if(text=="<br /><br />Running index.html"){ 
+			guiloader();
+	   };
+	}else{
+	   window.setTimeout('typwriter("'+el+'","'+text+'",'+(pos+1)+','+1+');',100);
+	};
 }
-else
-  if(pos==text.length){
-   $(el).html(text+"<blink>_</blink>");
-   
-   if(text=="<br /><br />Running index.html"){ 
-   		guiloader()
-   };
-   }
-  else
-   window.setTimeout('typwriter("'+el+'","'+text+'",'+(pos+1)+','+1+');',100);
- }
+////////////////////////////////////////////////////
 
-///////////////////////////////////////
+//	Form Validation n' Ajax Submission	////////////
+	var patt=new Array(),pattern,valid;
 
-
-
-
-$(window).load(function() {
+	function validator(inp,MinLen,MaxLen,type) {
+		MinLen=MinLen?MinLen:2;
+		MaxLen=MaxLen?MaxLen:256;
+		type=type?type:inp.type;
 	
+		patt['text'] = /^[^~`!@#\$%\^&*()_=+\|}{"':;\/\?\.\\0-9,-]+$/i;
+		patt['email'] = /^[a-z0-9]+(?:[\.-]?[a-z0-9]+)*@[a-z0-9]+([-]?[a-z0-9]+)*[\.-]?[a-z0-9]+([-]?[a-z0-9]+)*([\.-]?[a-z]{2,})*(\.[a-z]{2,5})+$/i;
+		patt['tel'] = /^[0-9]+$/i;	//TODO: it should be changed
+		patt['number'] = /^[0-9]+$/i;
+	
+		pattern=patt[type]?patt[type]:/(.)*/i;
 		
-		
-
-});
-
-
+		if (inp.value.length<MinLen || inp.value.length>MaxLen || !pattern.test(inp.value)) {
+			$(inp).addClass('err');
+			valid=false;
+		}else{
+			if($(inp).hasClass('err')) $(inp).removeClass('err');
+		};
+	};
+	
+	function SendForm(frm) {
+		valid=true;
+		for(key in frm.elements){
+			if(frm.elements[key].onblur) frm.elements[key].onblur();
+		};
+		if(valid){
+			ajaxSubmit(this);
+		};
+		return false;
+	};
+	
+	function ajaxSubmit(frm){
+		var sentData = $(frm).serialize();
+		$.ajax({
+			type : 'POST',
+			dataType : 'html',
+			url : 'send',
+			data : sentData+'&submit=submit',
+			beforeSend : function(){
+				$('div.loading').fadeIn(500);
+			},
+			success : function(data){
+				$('div.loading').fadeOut(500,function(){
+					$('div.response').html(data);
+				});
+			}
+		});
+	}
+	function RestForm(frm) {
+		for(key in frm.elements){
+			$(frm.elements[key]).removeClass('err');
+		};
+	};
+////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////
 $(function(){
@@ -161,21 +189,23 @@ $(function(){
 	}
 ////////////////////////////////////////////////////
 
-// Sync the Begining section	////////////////////
-	var redElmArr = new Array('#header','#footer'), redHeight=0;
+// Sync the Begining and ending section	////////////
+	var redElmArr = ['#header','#footer'], redHeight=0;
 	for(x in redElmArr){
 		redHeight+=$(redElmArr[x]).height();
 	}
-	var	ncsHeight = $('#slider').height()+redHeight;
+	var _objs = {'#slider':true,'.contactbox':false};
 	
 	(syncSlider = function(){
 		scrHeight = $(window).height();
-		vspace =(scrHeight>ncsHeight)?fit2parent.vspace('#slider',window)-redHeight/2:0;
-		
-		$('#slider').css({
-			'margin-top':vspace+'px',
-			'margin-bottom':vspace+'px'
-		});
+		for(x in _objs){
+			ncsHeight = $(x).height()+redHeight;
+			vspace =(scrHeight>ncsHeight)?fit2parent.vspace(x,window)-redHeight/2:0;
+			$(x).css({
+				'margin-top':_objs[x]?vspace+'px':'auto',
+				'margin-bottom':vspace+'px'
+			});
+		};
 	})();
 	$(window).resize(syncSlider);
 ////////////////////////////////////////////////////
@@ -301,5 +331,17 @@ $(function(){
 			$(this).addClass('hidden');	// Hiding the section title
 		});
 	});
+////////////////////////////////////////////////////
+
+//	Ajax Form Functions	////////////////////////////
+	$('#reCaptcha').css('cursor','pointer').click(function(){
+		$('input#captcha').css("background-image","url(captcha.jpg)");
+	});
+	
+	$('div.radio').click(function(){
+		$('div.radio').removeClass('active');
+		$(this).addClass('active');
+		$('input#course').val($(this).attr('id').substr(5));
+	})
 ////////////////////////////////////////////////////
 });

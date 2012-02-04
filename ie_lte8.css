@@ -1,8 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body {
-	font-weight:bold;
-}
+
 div#home {
 	background: url(images/main_bg_pattern.png) repeat left top;
 }

@@ -6,8 +6,8 @@
 	<meta name="description" content="1schools description here...">
 	<meta name="keywords" content="1schools,keywords,here...">
 	<title>&lt;1schools /&gt;</title>
-    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.8.16.core.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
 	
@@ -17,35 +17,29 @@
 </head>
 
 <body>
-
-<div id="loadtop">
-
-<p>
-
-<tt id="1pm">
-Welcome To 1Schools Ver <1.0.0.0.120> - Best Exprience on Google Chrome<br /><br /><br />
-</tt>
-<tt id="2pm">
-Please Wait to Website completely Load on Your System...<br /><br />
-</tt>
-<tt id="slide-client"></tt><br />
-<tt id="slide-client2"></tt>
-</p>
-
-
-
-</div>
-
-<div id="loading">
-	<a href="https://plus.google.com/108810009310544215271" id="gplus" target="_blank" rel="nofollow" >+</a>
-    <div id="inner-circle"></div>
-    <div id="outer-circle"></div>
-	<div id="waittext"> شکیبا باشید </div>
-	<p id="copyrighttxt" style="direction:ltr" >A 1Devs.com website. Copyleft &copy; 1Devs Education Department.</p>
-
-</div>
-
-
+	<!--	+ 1schools loading	
+	<div id="loadtop">
+		<p>
+			<tt id="1pm">
+				Welcome To 1Schools Ver <1.0.0.0.120> - Best Exprience on Google Chrome<br /><br /><br />
+			</tt>
+			<tt id="2pm">
+				Please Wait to Website completely Load on Your System...<br /><br />
+			</tt>
+			<tt id="slide-client"></tt><br />
+			<tt id="slide-client2"></tt>
+		</p>
+	</div>
+	
+	<div id="loading">
+		<a href="https://plus.google.com/108810009310544215271" id="gplus" target="_blank" rel="nofollow" >+</a>
+		<div id="inner-circle"></div>
+		<div id="outer-circle"></div>
+		<div id="waittext"> شکیبا باشید </div>
+		<p id="copyrighttxt" style="direction:ltr" >A 1Devs.com website. Copyleft &copy; 1Devs Education Department.</p>
+	</div>
+	--><!--	- 1schools loading	-->
+	
 	<div id="home">
 	<!--	+ Background layers called:wrapper	-->
 		<div id="wrapper-top">
@@ -205,8 +199,7 @@ Please Wait to Website completely Load on Your System...<br /><br />
 						</div>
 					</div>
 					<div class="clear"></div>
-					
-					<div class="H75"></div>
+					<div class="seperator"></div>
 	
 					<div id="mobs_section" class="section">
 					
@@ -262,17 +255,60 @@ Please Wait to Website completely Load on Your System...<br /><br />
 						</div>
 					</div>
 					<div class="clear"></div>
-					
-					<div class="H75"></div>
+					<div class="seperator"></div>
 	
 					<div id="register" class="section">
 						<div class="regbox">
 							<div class="icon"></div>
+							<div class="fleft corner topLeft"></div>
+							<div class="fright corner topRight"></div>
+							<div class="bTop"></div>
+							<div class="clear"></div>
+							
+							<div class="bRight">
+							<div class="bLeft">
+							
+								<form id="regfrm" method="post" onsubmit="return SendForm(this)" onreset="RestForm(this)">
+										<label for="name">نام و نام خانوادگی</label>
+										<input type="text" name="name" id="name" onblur="validator(this)" value="">
+										<div class="clear"></div>
+										
+										<label for="email">پست الکترونیک</label>
+										<input type="email" name="email" id="email" class="ltr" onblur="validator(this)" value="">
+										<div class="clear"></div>
+										
+										<label for="phone">شماره تماس</label>
+										<input type="tel" name="phone" id="phone" class="ltr" onblur="validator(this,7)" value="">
+										<div class="clear"></div>
+										
+										<label>دوره مورد علاقه</label>
+										<div id="prog_web" class="radio active">برنامه نویسی وب</div><div id="prog_mobile" class="radio">برنامه نویسی موبایل</div>
+										<input type="hidden" name="course" id="course" value="web">
+										<div class="clear"></div>
+										
+										<div class="capbox">
+										<label for="captcha">کد امنیتی</label>
+										<input type="text" name="captcha" id="captcha" class="ltr" onblur="validator(this,7,null,'number')" value="" maxlength="7">
+										<div id="reCaptcha"></div>
+										<div class="clear"></div>
+										</div>
+										
+										<input type="submit" name="submit" value="ثبت نام" />
+										<input type="reset" value="دوباره" />
+										<div class="loading fleft"></div>
+										<div class="response"></div>
+										<div class="clear"></div>
+								</form>
+							</div>
+							</div>
+							
+							<div class="fleft corner bottomLeft"></div>
+							<div class="fright corner bottomRight"></div>
+							<div class="bBottom"></div>
 							
 						</div>
 					</div>
 					<div class="clear"></div>
-					
 					<div class="seperator"></div>
 	
 					<div id="contact" class="section">
@@ -294,7 +330,7 @@ Please Wait to Website completely Load on Your System...<br /><br />
 						</div>
 					</div>
 					<div class="clear"></div>
-					<div class="seperator"></div>
+					<div class="H30"></div>
 				<!--	- Page Sections		-->
 					<div id="circles"></div>
 				</div>
