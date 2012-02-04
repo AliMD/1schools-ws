@@ -1,5 +1,5 @@
-﻿<?php 
-session_start();
+﻿﻿<?php 
+@session_start();
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 		}
 		else
 		{ 
-		$error_name='نام'; 
+		$error_name='نام، '; 
 		}
 		
 		if (preg_match("/^[a-z0-9]+(?:[\.-]?[a-z0-9]+)*@[a-z0-9]+([-]?[a-z0-9]+)*[\.-]?[a-z0-9]+([-]?[a-z0-9]+)*([\.-]?[a-z]{2,})*(\.[a-z]{2,5})+$/i",$email))
@@ -35,16 +35,16 @@ if(isset($_POST['submit'])){
 		}
 		else
 		{ 
-		$error_email='ایمیل'; 
+		$error_email='ایمیل، '; 
 		}
 		
-		if (preg_match("[^[0-9]+$]",$tel))
+		if (preg_match("/^[^\[\]~`!\@\#\$%\^&\*_=\|}{\"\'\:;\/\?\.\\,a-wyz]+$/i",$tel))
 		{
 		$valid_tel=$tel;
 		}
 		else
 		{ 
-		$error_tel='تلفن'; 
+		$error_tel='تلفن، '; 
 		}
 		
 		if (preg_match('/^[A-z]+$/',$course))
@@ -53,19 +53,19 @@ if(isset($_POST['submit'])){
 		}
 		else
 		{ 
-		$error_course='دوره'; 
+		$error_course='دوره، '; 
 		}
 		
 		if(( strlen($valid_name)>0)&&(strlen($valid_email)>0)&&(strlen($valid_tel)>0)&&(strlen($valid_course)>0) ){
 			
-			$con = @mysql_connect("localhost","schools_wsuser","1234QweR");
-			@mysql_select_db("schools_ws", $con);
+			$con = @mysql_connect("localhost","databaseuser","databasepass");
+			@mysql_select_db("databasename", $con);
 			
 			if(!$con) die('خطا در اتصال به بانک اطلاعاتی');
 			  
 			$sql="INSERT INTO users (name, email, tel, course)
 			VALUES
-			('$_POST[name]','$_POST[email]','$_POST[tel]','$_POST[course]')";
+			('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[course]')";
 
 			if(!mysql_query($sql,$con))	die('خطا');
 

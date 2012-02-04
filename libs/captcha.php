@@ -32,7 +32,3 @@ imagejpeg($NewImage);
 imagedestroy($NewImage);
 $_SESSION['security_code'] = $sec_code;
 ?>
-
-
-
-
