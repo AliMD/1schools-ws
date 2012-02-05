@@ -141,11 +141,14 @@ div#wrapper-right {
 	z-index:100001;
 	background:#000;
 	direction:ltr;
-	font-family:monospace, Geneva, sans-serif;
-	font-size:13px;
-	color:#fff;
+	font-family: monospace, "Courier New", Courier;
+	font-size:15px;
+	color:#e7e7e7;
 	padding:5px;
+	line-height:110%;
 }
+.BASH_1 { color: rgb(0,128,0); }
+.BASH_2 { color: rgb(128,128,0); }
 
 @-webkit-keyframes spin {
   from { -webkit-transform: rotate(0deg); }
@@ -188,15 +191,26 @@ div#wrapper-right {
 }
 
 #loading #copyrighttxt{
-	color:#444444;	
+	color:#444;	
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
+	font-size:11px;
 	bottom:10px;
 	position:absolute;
 	left:0;
 	right:0;
 	text-align:center;
+	direction:ltr;
 }
+	#copyrighttxt span {
+		-khtml-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-o-transform: rotate(180deg);
+		-ms-transform: rotate(180deg);
+		transform: rotate(180deg);
+		display:inline-block;
+		line-height:70% !important;
+	}
 
 #loading #inner-circle{
 	width:218px;
@@ -839,6 +853,7 @@ div#container div.centerbox {
 				-ms-text-shadow: 0 -1px rgba(0,0,0,.2);
 				-khtml-text-shadow: 0 -1px rgba(0,0,0,.2);
 				box-shadow:none;
+				cursor:pointer;
 			}
 			#regfrm input[type="reset"] {
 				margin-left:8px;
@@ -874,6 +889,7 @@ div#container div.centerbox {
 					position:absolute;
 					top:22px;
 					left:128px;
+					cursor:pointer;
 				}
 			#regfrm div.radio {
 				display:inline-block;
@@ -999,6 +1015,5 @@ div#container div.centerbox {
 			height:136px;
 			margin:0 auto;
 			background:url(images/end_circles.png) left top no-repeat;
-			z-index:0;
 		}
 /*	- Container Section	*/

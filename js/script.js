@@ -71,7 +71,10 @@
 $(window).load(function() {
 	$('.right_sec #brwsrs_msg').hide();
 	$('.left_sec #mobs_msg').hide();
-	typwriter('#slide-client',"$ 1Devs -m run GUI for 'loading'          ",0);
+	$('#2pm').append('<span class="BASH_1">Administrator@1SCHOOLS</span> <span class="BASH_2">~</span><br>$');
+
+	typwriter('#slide-client',"          1Devs -m run GUI for 'loading'          ",0)
+
 	$('body').css("overflow","auto");
 });
 
@@ -104,8 +107,8 @@ function typwriter(el,text,pos,no){
 	ctext=text.substring(0,pos)+(pos%2?'_':'<blink>_</blink>');
 	$(el).html(ctext);
 
-	if(pos==42){
-		$(el).html("$ 1Devs -m run GUI for 'loading'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 file(s) found for loading gui.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP://1schools.com/ run loading part<span id=\"slide-client2\"><blink>_</blink></span><br />");
+	if(pos==50){
+		$(el).html("1Devs -m run GUI for 'loading'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 file(s) found for loading gui.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP://1schools.com/ run loading part<span id=\"slide-client2\"><blink>_</blink></span><br>");
 		typwriter('#slide-client2',"<br /><br />Running index.html",0,2);
 	}else if(pos==text.length){
 	   $(el).html(text+"<blink>_</blink>");
@@ -347,7 +350,7 @@ $(function(){
 ////////////////////////////////////////////////////
 
 //	Ajax Form Functions	////////////////////////////
-	$('#reCaptcha').css('cursor','pointer').click(reCaptcha);
+	$('#reCaptcha').click(reCaptcha);
 	
 	$('div.radio').click(function(){
 		$('div.radio').removeClass('active');

@@ -21,7 +21,7 @@ div.sec_button .button{
 	right: 1px;
 }
 
-div.copyleft span {
+div.copyleft span, #copyrighttxt span {
 	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
