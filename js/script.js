@@ -65,40 +65,53 @@
 
 	};
 })(jQuery);
+////////////////////////////////////////////////////
 
+//	1DEVS Node Checker - jQuery Plugin	////////////
+//	proje be samar naresid :D beshe ke ghabl az barname nevisi khode jQuery ro ye negah bokonim, $(node).ready !!!! :D
+////////////////////////////////////////////////////
 
-//////////// first loading
-$(window).load(function() {
+// first loading	////////////////////////////////
+$('#loading').ready(function() {
 	$('.right_sec #brwsrs_msg').hide();
 	$('.left_sec #mobs_msg').hide();
+	
 	$('#2pm').append('<span class="BASH_1">Administrator@1SCHOOLS</span> <span class="BASH_2">~</span><br>$');
-
+	
 	typwriter('#slide-client',"          1Devs -m run GUI for 'loading'          ",0)
-
 	$('body').css("overflow","auto");
 });
 
+var isLoaded = false;
+$(window).load(function(){
+	isLoaded=true;
+});
+
 function guiloader(){
-	$('#loadtop').delay(1000).toggle(500,function(){
-		$("#loading").delay(3000).animate({
-			top: '-=100%'
-		},4000);	
-		  
-		$('#slider .right_sec').delay(4000).animate({
-			'background-position-x':'0px',
-			'backgroundPosition' : '0px 84px'
-		},1000,function(){
-			$('.right_sec #brwsrs_msg').fadeIn(1000);
+	if(isLoaded){
+		$('#loadtop').delay(1000).toggle(500,function(){
+			$("#loading").delay(3000).animate({
+				top: '-=100%'
+			},4000);	
+			  
+			$('#slider .right_sec').delay(4000).animate({
+				'background-position-x':'0px',
+				'backgroundPosition' : '0px 84px'
+			},1000,function(){
+				$('.right_sec #brwsrs_msg').fadeIn(1000);
+			});
+			  
+			$('#slider .left_sec').delay(4000).animate({
+				'background-position-x':'305px',
+				'backgroundPosition' : '305px 84px'
+			},1000,function(){
+				$('.left_sec #mobs_msg').fadeIn(1000);
+			});
 		});
-		  
-		$('#slider .left_sec').delay(4000).animate({
-			'background-position-x':'305px',
-			'backgroundPosition' : '305px 84px'
-		},1000,function(){
-			$('.left_sec #mobs_msg').fadeIn(1000);
-		});
-	});
-};
+	}else{
+		setTimeout(guiloader,1);
+	}
+}
 
 ////////////////////////////////////////////////////
 
