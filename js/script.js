@@ -69,33 +69,34 @@
 
 //////////// first loading
 $(window).load(function() {
-		$('.right_sec #brwsrs_msg').hide();
-		$('.left_sec #mobs_msg').hide();
-		typwriter('#slide-client',"$ 1Devs -m run GUI for 'loading'          ",0);
-		$('body').css("overflow","auto");
-
+	$('.right_sec #brwsrs_msg').hide();
+	$('.left_sec #mobs_msg').hide();
+	typwriter('#slide-client',"$ 1Devs -m run GUI for 'loading'          ",0);
+	$('body').css("overflow","auto");
 });
 
 function guiloader(){
 	$('#loadtop').delay(1000).toggle(500,function(){
 		$("#loading").delay(3000).animate({
-			top: '-=100%',
-		  },4000);	
+			top: '-=100%'
+		},4000);	
 		  
-		  $('#slider .right_sec').delay(4000).animate({
-				'background-position-x':'0px',
-				'backgroundPosition' : '0px 84px'
-				},1000,function(){
-					$('.right_sec #brwsrs_msg').fadeIn(1000);
-		  });
-		  $('#slider .left_sec').delay(4000).animate({
-				'background-position-x':'305px',
-				'backgroundPosition' : '305px 84px'
-				},1000,function(){
-					$('.left_sec #mobs_msg').fadeIn(1000);
-		   });
+		$('#slider .right_sec').delay(4000).animate({
+			'background-position-x':'0px',
+			'backgroundPosition' : '0px 84px'
+		},1000,function(){
+			$('.right_sec #brwsrs_msg').fadeIn(1000);
+		});
+		  
+		$('#slider .left_sec').delay(4000).animate({
+			'background-position-x':'305px',
+			'backgroundPosition' : '305px 84px'
+		},1000,function(){
+			$('.left_sec #mobs_msg').fadeIn(1000);
+		});
 	});
 };
+
 ////////////////////////////////////////////////////
 
 //	typewriter function	////////////////////////////
@@ -166,6 +167,7 @@ function typwriter(el,text,pos,no){
 				$('div.loading').fadeOut(500,function(){
 					$('div.response').fadeIn(500);
 					$('div.response').html(data);
+					reCaptcha();
 				});
 			}
 		});
@@ -173,7 +175,13 @@ function typwriter(el,text,pos,no){
 	function RestForm(frm) {
 		for(key in frm.elements){
 			$(frm.elements[key]).removeClass('err');
+			reCaptcha();
 		};
+	};
+	
+	function reCaptcha(){
+		var d=new Date();
+		$('input#captcha').css("background-image","url(captcha.jpg?"+d.getTime()+")");
 	};
 ////////////////////////////////////////////////////
 
@@ -338,10 +346,7 @@ $(function(){
 ////////////////////////////////////////////////////
 
 //	Ajax Form Functions	////////////////////////////
-	$('#reCaptcha').css('cursor','pointer').click(function(){
-		var d=new Date();
-		$('input#captcha').css("background-image","url(captcha.jpg?"+d.getTime()+")");
-	});
+	$('#reCaptcha').css('cursor','pointer').click(reCaptcha);
 	
 	$('div.radio').click(function(){
 		$('div.radio').removeClass('active');
