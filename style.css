@@ -942,7 +942,6 @@ div#container div.centerbox {
 				width:32px;
 				height:32px;
 				background:url(images/loading.gif) left top no-repeat;
-				display:none;
 			}
 			#regfrm div.response {
 				font-size:16px;
@@ -950,6 +949,15 @@ div#container div.centerbox {
 				margin-left:208px;
 				height:57px;
 				line-height:57px;
+			}
+			#regfrm .response, #regfrm .loading {
+				-webkit-transition:none;
+				-moz-transition:none;
+				-o-transition:none;
+				-ms-transition:none;
+				-khtml-transition:none;
+				transition:none;
+				display:none;
 			}
 		
 	#contact div.contactbox {

@@ -165,7 +165,7 @@ function typwriter(el,text,pos,no){
 			},
 			success : function(data){
 				$('div.loading').fadeOut(500,function(){
-					$('div.response').fadeIn(500);
+					$('div.response').fadeIn(600);
 					$('div.response').html(data);
 					reCaptcha();
 				});
@@ -175,6 +175,7 @@ function typwriter(el,text,pos,no){
 	function RestForm(frm) {
 		for(key in frm.elements){
 			$(frm.elements[key]).removeClass('err');
+			$('div.response').fadeOut(500);
 			reCaptcha();
 		};
 	};
