@@ -89,7 +89,6 @@ $(window).load(function(){
 
 function guiloader(){
 	if(isLoaded){
-		$('#loadtop').delay(1000).toggle(500,function(){
 			$("#loading").delay(3000).animate({
 				top: '-=100%'
 			},4000);	
@@ -107,7 +106,6 @@ function guiloader(){
 			},1000,function(){
 				$('.left_sec #mobs_msg').fadeIn(1000);
 			});
-		});
 	}else{
 		setTimeout(guiloader,1);
 	}
@@ -126,7 +124,7 @@ function typwriter(el,text,pos,no){
 	}else if(pos==text.length){
 	   $(el).html(text+"<blink>_</blink>");
 	   if(text=="<br /><br />Running index.html"){ 
-			guiloader();
+	   		$('#loadtop').delay(1000).toggle(500,null,guiloader);
 	   };
 	}else{
 	   window.setTimeout('typwriter("'+el+'","'+text+'",'+(pos+1)+','+1+');',100);
