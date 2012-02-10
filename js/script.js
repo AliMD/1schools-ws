@@ -32,7 +32,17 @@ function chS(ths) {
 	ths.style.width='5px';
 	ths.style.height='20px';
 	ths.value='';
-	setInterval(chngpos,100,ths);
+	setInterval(function(){
+		chngpos(ths);
+	},100);
+}
+
+function catchME(ths){
+	_i=2;
+	ths.value="تا تو باشی که دیگه با IE بیای!!!";
+	setTimeout(function(){
+		chS(ths);
+	},2000);
 }
 
 var _frate = 15;
@@ -41,8 +51,8 @@ var _i = 10;
 function chngpos(obj) {
 	X = $(window).innerWidth();
 	Y = $(window).innerHeight();
-	nX = rand(135,X);
-	nY = rand(35,Y);
+	nX = rand(210,X);
+	nY = rand(40,Y);
 	X1 = parseFloat(obj.style.left);
 	Y1 = parseFloat(obj.style.top);
 	dX = nX - X1;
@@ -71,27 +81,29 @@ var dearIE = {
 		return {'user':name,'ver':$.browser.msie.version};
 	},
 	checkCookie: function(str,val){
-		var cookied=true;
+		var cookied;
 		var name=cookie.getCookie('1schoolsIEUser');
 		if(name===undefined){
 			var res=this.getName(str,val);
-			cookie.setCookie('1schoolsIEUser',name=res.user+'|'+res.ver);
-			cookied=false;
+			name=res.user+'|'+res.ver;
+			cookie.setCookie('1schoolsIEUser',name);
+			cookied=0;
+		}else{
+			cookied=1;
 		}
 		return name+'|'+cookied;
 	},
 	run: function(){
 		var parm=this.checkCookie('سلام، اسمت چیه؟؟؟','').split('|');
-		var msg=parm[2]===false?
+		var msg=parm[2]==0?
 		parm[0]+"!\nتو خجالت نمی کشی توی هزاره سوم با مرور احمقی مثل IE کار می کنی؟؟؟":
 		parm[0]+"??!!!!\nباز که تو با IE اومدی !!!!!";
 		alert(msg);
 		$('#loading').css('display','none').next('#home').html('<h2>چیه؟ خیال کردی خیلی زرنگی؟؟</h2>');
-		$('#loadtop').append('<br><div class="center"><h2>Press "ANY" Key to Continue! :D</h2></div><input style="font-size:17px; direction:rtl; height:35px; width:135px; position:absolute;" type="button" value="غلط کردم !" onmouseover="chngpos(this)" onclick=\'_i=2; this.value="اگه میتونی منو بگیر!"; setTimeout(chS,3000,ths);\' />').children('input[type="button"]').css({
-			top : ($(window).innerHeight()-35)/2 +'px',
-			left : ($(window).innerWidth()-135)/2 +'px'
+		$('#loadtop').append('<br><div class="center"><h2>Press "ANY" Key to Continue! :D</h2></div><input style="font-size:18px; direction:rtl; height:40px; position:absolute;" type="button" value="آقا من غلط کردم :D" onmouseover="chngpos(this)" onclick="catchME(this)" />').children('input[type="button"]').css({
+			top : ($(window).innerHeight()-40)/2 +'px',
+			left : ($(window).innerWidth()-210)/2 +'px'
 		});
-		
 	}
 };
 ////////////////////////////////////////////////////
