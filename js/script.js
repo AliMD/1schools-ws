@@ -1,5 +1,100 @@
 // JavaScript Document
-// loading part
+//	Cookie functions	////////////////////////////
+var cookie = {
+	setCookie: function(c_name,value,exdays){
+		var exdate=new Date();
+		exdate.setDate(exdate.getDate() + exdays);
+		var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+		document.cookie=c_name + "=" + c_value;
+	},
+	getCookie: function(c_name){
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for(i=0; i<ARRcookies.length; i++){
+			x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+			y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+			x=x.replace(/^\s+|\s+$/g,"");
+			if (x==c_name){
+				return unescape(y);
+			}
+		}
+	}
+}
+////////////////////////////////////////////////////
+
+//	Random number between min and max val.	////////
+function rand(Min,Max){
+	return Math.floor(Math.random()*(Max-Min+1) + Min);
+}
+////////////////////////////////////////////////////
+
+//	Special msg for dear IE :D	////////////////////
+function chS(ths) {
+	ths.style.width='5px';
+	ths.style.height='20px';
+	ths.value='';
+	setInterval(chngpos,100,ths);
+}
+
+var _frate = 15;
+var _i = 10;
+
+function chngpos(obj) {
+	X = $(window).innerWidth();
+	Y = $(window).innerHeight();
+	nX = rand(135,X);
+	nY = rand(35,Y);
+	X1 = parseFloat(obj.style.left);
+	Y1 = parseFloat(obj.style.top);
+	dX = nX - X1;
+	dY = nY - Y1;
+	stepX  = Math.floor(dX/_i);
+	stepY  = Math.floor(dY/_i);
+
+	function animate() {
+		X1 += stepX;
+		Y1 += stepY;
+		obj.style.top = Y1+"px";
+		obj.style.left = X1+"px";
+		if( Math.abs(X1-nX)> Math.abs(stepX) && Math.abs(Y1-nY)> Math.abs(stepY) ) {
+				(X1 > 5) && (Y1 > 5) && (X1 < X-155) && (Y1 < Y-35) ? setTimeout(animate,_frate) : '';
+		}
+	}
+	animate();
+}
+
+var dearIE = {
+	getName: function(str,val){
+		var name;
+		do{
+			name=prompt(str,val);
+		}while(!isNaN(name) || !name);
+		return {'user':name,'ver':$.browser.msie.version};
+	},
+	checkCookie: function(str,val){
+		var cookied=true;
+		var name=cookie.getCookie('1schoolsIEUser');
+		if(name===undefined){
+			var res=this.getName(str,val);
+			cookie.setCookie('1schoolsIEUser',name=res.user+'|'+res.ver);
+			cookied=false;
+		}
+		return name+'|'+cookied;
+	},
+	run: function(){
+		var parm=this.checkCookie('سلام، اسمت چیه؟؟؟','').split('|');
+		var msg=parm[2]===false?
+		parm[0]+"!\nتو خجالت نمی کشی توی هزاره سوم با مرور احمقی مثل IE کار می کنی؟؟؟":
+		parm[0]+"??!!!!\nباز که تو با IE اومدی !!!!!";
+		alert(msg);
+		$('#loading').css('display','none').next('#home').html('<h2>چیه؟ خیال کردی خیلی زرنگی؟؟</h2>');
+		$('#loadtop').append('<br><div class="center"><h2>Press "ANY" Key to Continue! :D</h2></div><input style="font-size:17px; direction:rtl; height:35px; width:135px; position:absolute;" type="button" value="غلط کردم !" onmouseover="chngpos(this)" onclick=\'_i=2; this.value="اگه میتونی منو بگیر!"; setTimeout(chS,3000,ths);\' />').children('input[type="button"]').css({
+			top : ($(window).innerHeight()-35)/2 +'px',
+			left : ($(window).innerWidth()-135)/2 +'px'
+		});
+		
+	}
+};
+////////////////////////////////////////////////////
 
 /////////////
 // background position have bug in FF and IE6 so, this jquery-plug-in added
@@ -124,7 +219,7 @@ function typwriter(el,text,pos,no){
 	}else if(pos==text.length){
 	   $(el).html(text+"<blink>_</blink>");
 	   if(text=="<br /><br />Running index.html"){ 
-	   		$('#loadtop').delay(1000).toggle(500,null,guiloader);
+	   		$.browser.msie?dearIE.run():$('#loadtop').delay(1000).toggle(500,null,guiloader);
 	   };
 	}else{
 	   window.setTimeout('typwriter("'+el+'","'+text+'",'+(pos+1)+','+1+');',100);
@@ -202,7 +297,6 @@ function typwriter(el,text,pos,no){
 
 ////////////////////////////////////////////////////
 $(function(){
-	
 // being at the middle of the parent element 	////
 	var fit2parent = {
 		vspace: function(elm,prnt){
